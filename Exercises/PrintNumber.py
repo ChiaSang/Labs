@@ -4,7 +4,8 @@ import sys
 
 count = 0
 while True:
-    PrintNumber = int(input("please input the number which you want to printed\n"))
+    PrintNumber = int(
+        input("please input the number which you want to printed\n"))
     while count < 10000:
         if PrintNumber <= count:
             if PrintNumber == count:

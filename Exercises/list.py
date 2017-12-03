@@ -1,5 +1,5 @@
-#/usr/bin/env python3
-#!-*-coding:utf-8-*-
+# /usr/bin/env python3
+# !-*-coding:utf-8-*-
 l1 = ['hello', 'world', 18, 'apple', None]
 l2 = []
 for x in l1:
