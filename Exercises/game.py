@@ -20,7 +20,7 @@ if game_times > 0:
 else:
     avg_times = 0
 print('''%s,你已经玩了%d次了，最少%d次轮猜出答案，平均%.2f次猜出
-'''%(name, game_times, min_times, avg_times))
+''' % (name, game_times, min_times, avg_times))
 num = randint(1, 100)
 print('Guess What I think?\n')
 bingo = False

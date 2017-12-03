@@ -33,7 +33,7 @@ while score != secret and i < 6:
 		---------------
 		   游戏结束
 		---------------
-		''');
+		''')
 
 if score == secret:
     print("恭喜你答对了！")
