@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+		body {
+			background: pink;
+			height: 2000px;
+		}
+
+		.box {
+			height: 200px;
+			width: 50px;
+			background: gray;
+			position: fixed;
+			top: 400px;
+			right: 0;
+		}
+
+		.box>div {
+			height: 39px;
+			border-bottom: 1px solid #fff;
+			background: url(img/toolbars.png) no-repeat 10px 10px ;
+		}
+		.box>.border-none {
+			border-bottom: none;
+			height: 40px;
+		}
+
+		.box > .div1 {
+			background-position: -80px -172px;
+			position: relative;
+		}
+		
+		.box > .div1:hover .hidden{
+			display: block;
+		}
+
+		.box .dot {
+			background: url(img/toolbars.png) no-repeat ;
+			background-position: -150px -150px;
+			/*绝对定位*/
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			width: 5px;
+			height: 5px;
+		}
+
+		.hidden {
+			position: absolute;
+			top: 0;
+			right: 0;
+			display: none;
+			background: red;
+			/*定位*/
+			width: 120px;
+			padding-left: 10px;
+			
+		}
+		.hidden .title {
+			float: left;
+			line-height: 39px;
+			color: #fff;
+		}
+		.hidden .bg {
+			float: right;
+			background: url(img/toolbars.png) no-repeat 10px 10px ;
+			background-position: -80px -172px;
+			height: 39px;
+			width: 50px;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="div1">
+			<span class="dot"></span>
+			<div class="hidden">
+			    <span class="title">京东快递</span>
+		         <span class="bg"></span>
+			</div>
+		</div>
+		<div class="div2"></div>
+		<div class="div3"></div>
+		<div class="div4"></div>
+		<div class="div5 border-none"></div>
+	</div>
+</body>
+</html>

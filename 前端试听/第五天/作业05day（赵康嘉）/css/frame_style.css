@@ -1,0 +1,130 @@
+.div1 {
+    height: 500px;
+    width: 500px;
+    margin: auto;
+    border: 1px solid black;
+    background-color: tan;
+}
+.div1 > div {
+    text-align: center;
+    font-size: 15px;
+    vertical-align: middle;
+}
+.clear-none {
+    content: "";
+    display: block;
+    clear: both;
+}
+.first-line {
+    width: 100%;
+    height: 100px;
+}
+
+.div2 {
+    height: 98px;
+    width: 98px;
+    border: 1px solid red;
+    float: left;
+}
+
+.div3 {
+    height: 98px;
+    width: 98px;
+    border: 1px solid red;
+    float: left;
+}
+
+.div4 {
+    height: 98px;
+    width: 98px;
+    border: 1px solid red;
+    float: left;
+}
+
+.div5 {
+    height: 98px;
+    width: 98px;
+    border: 1px solid red;
+    float: left;
+}
+
+.div6 {
+    height: 98px;
+    width: 98px;
+    border: 1px solid red;
+    float: left;
+}
+.div7 {
+    width: 330px;
+    height: 380px;
+    float: left;
+    background-color: blue;
+
+}
+.div7-10 {
+    width: 330px;
+    height: 229px;
+    /*float: left;*/
+    border-bottom: 1px solid gray;
+    background-color: lightgreen;
+
+}
+.div7-11 {
+    width: 129px;
+    height: 99px;
+    float: left;
+    color: white;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    background-color: purple;
+
+}
+.div7-12 {
+    width: 200px;
+    height: 99px;
+    float: left;
+    color: white;
+    border-bottom: 1px solid gray;
+    background-color: pink;
+
+}
+.div7-13 {
+    width: 330px;
+    height: 50px;
+    float: left;
+    color: white;
+    border-bottom: 1px solid gray;
+    background-color: khaki;
+
+}
+.div8 {
+    width: 170px;
+    height: 380px;
+    float: left;
+    background-color: green;
+}
+.div8-14 {
+    height: 269px;
+    width: 169px;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    float: left;
+    color: white;
+    background-color: royalblue;
+}
+.div8-15 {
+    height: 110px;
+    width: 169px;
+    float: left;
+    color: white;
+    border-left: 1px solid gray;
+    background-color: saddlebrown;
+}
+.div9 {
+    width: 500px;
+    height: 20px;
+    float: left;
+    color: white;
+    font-size: 10px;
+    background-color: black;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		form {
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+<!--  action  设置提交的地址 -->
+<!-- 在表单里面，希望哪个内容提交，哪个标签就要有name属性 -->
+<!--  method 设置提交方式 -->
+<!-- 提交分两种方式，get 请求， post请求 -->
+
+<!-- get  https://www.baidu.com/?user=jim 
+	      http://www.baidu.com/?user=tom&introduce=good
+	      提交的数据，作为url的一部分，发送过去。 格式 请求的 url?name=value
+
+	      微博 文章
+ -->
+ <!-- post 请求，发送的数据，作为 数据包的形式，发送过去
+	user:lili
+    introduce:new person
+
+    用户要提交个人的信息 给服务器 
+
+  -->
+	<form action="http://www.baidu.com" method="get">
+		<p>
+			<label for="nick">昵称</label> <input type="text" id="nick" name="user">
+		</p>
+		<p>
+			<label for="">个人介绍：</label>
+		    <textarea name="introduce" id="" cols="30" rows="10" id="ii"></textarea>
+		</p>
+		<p>
+			<select name="location" id="">
+			<option value="beijing1">北京2</option>
+			<option value="beijing2">北京3</option>
+			<option value="beijing3">北京4</option>
+			<option value="beijing4">北京5</option>
+		    </select>
+		</p>
+		
+		<p>
+		    <!-- 不能提交信息 -->
+			<input type="button" value="我是button">
+		</p>
+		<p>
+		<!-- 可以做提交 -->
+			<input type="submit" value="提交">
+		</p>
+		<!-- 可以做提交 -->
+		<p>
+			<button>提交</button>
+		</p>
+	</form>
+</body>
+</html>

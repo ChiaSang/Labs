@@ -1,0 +1,7 @@
+<view class="container">
+
+<image class="avatar" src="/images/hw.png"></image>
+<text class="name">Hwllo World!</text>
+<text class="start">开启小程序</text>
+
+</view>

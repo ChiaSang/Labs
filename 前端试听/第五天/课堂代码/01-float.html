@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+		.box {
+			background: pink;
+			width: 1382px;
+		}
+
+		/*浮动对标签的影响  行内标签 设置宽高 设置 margin  padding */
+		
+		.s1 {
+			float: right;
+			background: yellow;
+			width: 500px;
+			height: 200px;
+			padding: 20px;
+			border: 1px solid green;
+		}
+		/*浮动对标签的影响  块级标签  宽度受内容的影响*/
+		.inner {
+			width: 800px;
+			height: 200px;
+			padding: 20px;
+			background: purple;
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		
+		<span class="s1">春晓</span>
+		<div class="inner">处处闻啼鸟</div>
+	</div>
+</body>
+</html>

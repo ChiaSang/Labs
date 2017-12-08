@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/*后代选择器*/
+		/*.box p {
+			color: red;
+		}*/
+
+		/*子代选择器*/
+		.box > p {
+			color: orange;
+		}
+		
+		.box span, .second span {
+			background: pink;
+		}
+
+		
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<span>春晓</span>
+		<p>春眠不觉晓</p>
+		<div class="nn">
+			<p>我是内如的p</p>
+		</div>
+	</div>
+
+	<div class="second">
+		
+		<span>eeee</span>
+		<p>曲项向天歌</p>
+	</div>
+	<span>我是最后的span</span>
+</body>
+</html>

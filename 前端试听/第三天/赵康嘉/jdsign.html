@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>京东企业用户注册页面</title>
+    <style>
+        .internal_box {
+            width: 700px;
+            margin: auto;
+            border: 1px solid #C4C8CD;
+            background-color: #FFFFFF;
+            padding: 10px;
+        }
+
+        h5 {
+            background-color: #F7F7F7;
+            font-size: 15px;
+        }
+
+        b {
+            color: red;
+        }
+
+        .button {
+            background-color: #D40303;
+            color: white;
+            border: 0px none;
+            padding: 8px 45px;
+            font-size: 15px;
+            width: 30%;
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .register {
+            height: 100px;
+        }
+
+        .register1 {
+            position: relative;
+            left: 236px;
+        }
+
+        .lable {
+            width: 200px;
+            text-align: right;
+        }
+
+        .inputbox1 {
+            background-image: url(img/user.jpg);
+        }
+
+        .inputbox2 {
+            background-image: url(img/psw.jpg);
+        }
+
+        #idinputbox {
+            background-position: right center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="internal_box">
+        <form action="">
+
+            <div>
+                <h5>账户信息：</h5>
+                <p><span class="lable"><b>*</b>用户名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span><input class="inputbox1" id="idinputbox" type="text" name="nickname" value=""></span></p>
+                <p><span class="lable"><b>*</b>请设置密码：</span><span><input class="inputbox2" id="idinputbox" type="password" name="nickname" value=""></span></p>
+                <p><span class="lable"><b>*</b>请确认密码：</span><span><input class="inputbox2" id="idinputbox" type="password" name="nickname" value=""></span></p>
+            </div>
+            <div>
+                <h5>联系人信息：</h5>
+                <p><span class="lable"><b>*</b>联系人姓名：</span><span><input type="text" name="name" value=""></span></p>
+                <p><span class="lable"><b>*</b>所在部门：&nbsp;&nbsp;&nbsp;</span><span><select>
+                        <option value="sel">请选择</option>
+                        <option value="ofic">办公室</option>
+                        <option value="mar">市场部</option>
+                        <option value="tec">技术部</option>
+                        <option value="purch">采购部</option>
+                        <option value="hr">人力资源</option>
+                        <option value="other">其他</option>
+                    </select></span></p>
+                <p><span class="lable"><b>*</b>固定电话：&nbsp;&nbsp;&nbsp;</span><span><input type="text" name="tel" value=""></span></p>
+            </div>
+            <h5>公司信息：</h5>
+            <div class="register">
+                <p><span class="lable"><b>*</b>公司名称：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span><input type="text" name="company" value=""></span></p>
+                <p><span class="lable"><b>*</b>购买类型/用途：&nbsp;</span>
+                    <input type="checkbox" name="it" value="">IT设备
+                    <input type="checkbox" name="digital" value="">数码通讯
+                    <input type="checkbox" name="officeitems" value="">办公用品耗材
+                    <input type="checkbox" name="applications" value="">大家电
+                    <input type="checkbox" name="project" value="">项目合作-政府采购
+                </p>
+            </div>
+            <div class="register1"><button class="button" type="submit">立即注册</button></div>
+        </form>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+
+	* {
+		background: yellow;
+	}
+		/*优先级： 
+
+		!important >  行内样式 > id选择器 > 类选择器 > 标签选择器
+
+		 */
+	/*	h2 {
+			color: red;
+		}
+
+		.cxiao {
+			color: green;
+		}
+*/
+/*相同优先级的，会选择距离最近的*/
+	
+
+		/*#hh {
+			color: blue;
+		}*/
+		#hh {
+			color: yellow !important;
+			font-size: 60px;
+			border: 1px solid green;
+		}
+		div {
+			height:20px; 
+			width:20px; 
+			background:url(images/camera.png) ;
+			/*background-position: 0 0;*/
+		}
+		div:hover{
+			background-position: 0 -20px;
+		}

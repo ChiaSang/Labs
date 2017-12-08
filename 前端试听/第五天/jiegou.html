@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.left {
+			float: left;
+		}
+		.box {
+			width: 500px;
+			height: 500px;
+			border: 1px solid gray;
+			margin: 20px auto;
+		}
+
+		.header {
+			height: 100px;
+			background: yellow;
+		}
+
+		.header .div1 {
+			width: 98px;
+			height: 98px;
+			border: 1px solid red;
+			float: left;
+		}
+		.content{
+			height: 299px;
+			background: pink;
+			border-bottom: 1px solid gray;
+		}
+
+		.content .cleft {
+			width: 329px;
+			border-right: 1px solid gray;
+			height: 299px;
+		}
+
+		.cleft .div6 {
+			height: 119px;
+			border-bottom: 1px solid gray;
+		}
+
+		.cleft .div89 {
+			height: 119px;
+			border-bottom: 1px solid gray;
+		} 
+
+		.div89  .div8 {
+			width: 119px;
+			border-right: 1px solid gray;
+			height: 119px;
+		}
+
+			.div89  .div9 {
+				width: 209px;
+				height: 119px;
+			}
+
+		.cleft .div11 {
+			height: 59px;
+		}
+		
+		.content .cright {
+			width: 170px;
+			height: 299px;
+		}
+
+		.cright .div7 {
+			height: 149px;
+			border-bottom: 1px solid gray;
+		}
+
+		.cright .div10 {
+			height: 149px;
+		}
+
+
+		.footer {
+			height: 100px;
+			background: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		
+		<div class="header">
+			<div class="div1"></div>
+			<div class="div1"></div>
+			<div class="div1"></div>
+			<div class="div1"></div>
+			<div class="div1"></div>
+		</div>
+		<div class="content">
+			<div class="cleft  left">
+				<div class="div6"></div>
+				<div class="div89">
+					<div class="div8"></div>
+					<div class="div9"></div>
+				</div>
+				<div class="div11"></div>
+			</div>
+			<div class="cright left">
+				<div class="div7"></div>
+				<div class="div10"></div>
+			</div>
+		</div>
+		<div class="footer"></div>
+	</div>
+</body>
+</html>
