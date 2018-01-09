@@ -24,7 +24,7 @@ DATA =[]
 
 # 参数
 find_arg = {
-    'q': '陀螺仪',
+    'q': '袜子',
     'initiative_id': 'staobaoz_%s%02d%02d' % (t[0], t[1], t[2]),
     '&ie': 'utf8'
 }
@@ -35,7 +35,7 @@ ajax_arg = {
     'callback': '',
       'data-calue': ''
 }
-search = '键盘'
+search = '袜子'
 time_id = 'staobaoz_%s%02d%02d' % (t[0], t[1], t[2])
 
 # 搜索页面

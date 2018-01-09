@@ -12,7 +12,7 @@ DATA = []
 
 t = time.localtime()
 # 搜索关键字
-find_word = 'python'
+find_word = '朱自清'
 # 参数
 find_arg = {
     'q': find_word,
