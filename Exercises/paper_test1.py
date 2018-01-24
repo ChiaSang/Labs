@@ -7,7 +7,6 @@ Created on Mon Jan 22 12:49:48 2018
 
 import requests
 import bs4
-from urllib.request import urlopen
 downloadPath = []
 dirPath = []
 fileName = []
@@ -15,8 +14,8 @@ dirName = []
 subdirName = []
 subhtml = []
 url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/'
-#url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/data/'
-#url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/extra/'
+# url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/data/'
+# url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/extra/'
 
 
 def regularizeHTML(url):
@@ -43,9 +42,9 @@ def isFile(src_a):
 def downloadFile(fileName, downloadPath):
     '''download the files'''
     for (i, j) in zip(fileName, downloadPath):
-        req = requests.get(j, stream=True)
+        req = requests.get(j, stream=False)
         with(open(i, 'wb')) as f:
-            for chunk in req.iter_content(chunk_size=102400):
+            for chunk in req.iter_content(chunk_size=1024):
                 if chunk:
                     f.write(chunk)
 

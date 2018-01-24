@@ -1,29 +1,65 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jan 22 12:49:48 2018
+
+@author: ChiaS
+"""
+
 import requests
 import bs4
-from urllib.request import urlopen
 downloadPath = []
-downloadName = []
-downloadDir = []
+dirPath = []
+fileName = []
+dirName = []
+subhtml = []
 url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/'
-#url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/data/'
-#url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/extra/'
-html = requests.get(url)
-html.raise_for_status()
-file_size = int(urlopen(url).info().get('Content-Length', -1))
-soup = bs4.BeautifulSoup(html.text, 'lxml')
-print(soup.pre.text.encode('utf-8', 'ignore').decode('utf-8'))
-a_address = soup.find_all(name='a')
-for item in a_address[5:]:
-    downloadPath.append(url + item.get('href'))
-    downloadName.append(item.get('href'))
-for filename in downloadName:
-    if '/' not in filename:
-        for downloadAddress in downloadPath:
-            req = requests.get(downloadAddress, stream=False)
-            with(open(filename, 'ab')) as f:
-                for chunk in req.iter_content(chunk_size=512):
-                    if chunk:
-                        f.write(chunk)
-            print(filename)
-    else:
-        downloadDir.append(filename)
+# url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/data/'
+# url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/extra/'
+
+
+def regularizeHTML(url):
+    '''RegularizeHTML'''
+    html = requests.get(url)
+    html.raise_for_status()
+    soup = bs4.BeautifulSoup(html.text, 'lxml')
+    print(soup.pre.text.encode('utf-8', 'ignore').decode('utf-8'))
+    src_a = soup.find_all(name='a')
+    return(src_a)
+
+
+def isFile(src_a):
+    '''getFile and judge the file'''
+    for item in src_a[5:]:
+        if '/' not in item.get('href'):
+            downloadPath.append(url + item.get('href'))
+            fileName.append(item.get('href'))
+        else:
+            dirPath.append(url + item.get('href'))
+            dirName.append(item.get('href'))
+
+
+def downloadFile(fileName, downloadPath):
+    '''download the files'''
+    for (i, j) in zip(fileName, downloadPath):
+        req = requests.get(j, stream=True)
+        with(open(i, 'wb')) as f:
+            for chunk in req.iter_content(chunk_size=1024):
+                if chunk:
+                    f.write(chunk)
+                    f.flush()
+
+
+def traversal_subdir(dirpath):
+    for address in dirpath:
+        html = regularizeHTML(address)
+    return html
+
+if __name__ == '__main__':
+    gethtml = regularizeHTML(url)
+    isFile(gethtml)
+   # downloadFile(fileName, downloadPath)
+    suba = traversal_subdir(dirPath)
+    subfname = suba.get('href')
+    for a_href in subfname:
+        isFile(a_href)
+        downloadFile(fileName, downloadPath)
