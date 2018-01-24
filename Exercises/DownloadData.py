@@ -7,18 +7,18 @@ Created on Mon Jan 22 12:49:48 2018
 
 import requests
 import bs4
-downloadPath = []
-dirPath = []
-fileName = []
-dirName = []
-url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/'
-# url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/data/'
-# url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/extra/'
-#url = 'http://data.caida.org/datasets/topology/ark/'
+DOWNLOADPATH = []
+DIRPATH = []
+FILENAME = []
+DIRNAME = []
+URL = 'http://data.caida.org/datasets/2013-asrank-data-supplement/'
+# URL = 'http://data.caida.org/datasets/2013-asrank-data-supplement/data/'
+# URL = 'http://data.caida.org/datasets/2013-asrank-data-supplement/extra/'
+#URL = 'http://data.caida.org/datasets/topology/ark/'
 
 
-def regularizeHTML(url):
-    '''RegularizeHTML'''
+def regularize_html(url):
+    '''regularize_html'''
     html = requests.get(url)
     html.raise_for_status()
     soup = bs4.BeautifulSoup(html.text, 'lxml')
@@ -27,20 +27,20 @@ def regularizeHTML(url):
     return(src_a)
 
 
-def isFile(src_a):
+def is_file(src_a):
     '''getFile and judge the file'''
     for item in src_a[5:]:
         if '/' not in item.get('href'):
-            downloadPath.append(url + item.get('href'))
-            fileName.append(item.get('href'))
+            DOWNLOADPATH.append(URL + item.get('href'))
+            FILENAME.append(item.get('href'))
         else:
-            dirPath.append(url + item.get('href'))
-            dirName.append(item.get('href'))
+            DIRPATH.append(URL + item.get('href'))
+            DIRNAME.append(item.get('href'))
 
 
-def downloadFile(fileName, downloadPath):
+def download_file(FILENAME, DOWNLOADPATH):
     '''download the files'''
-    for (i, j) in zip(fileName, downloadPath):
+    for (i, j) in zip(FILENAME, DOWNLOADPATH):
         req = requests.get(j, stream=True)
         with(open(i, 'ab')) as f:
             for chunk in req.iter_content(chunk_size=1024):
@@ -51,13 +51,13 @@ def downloadFile(fileName, downloadPath):
 
 def traversal_subdir(dirpath):
     for address in dirpath:
-        html = regularizeHTML(address)
-        isFile(html)
+        html = regularize_html(address)
+        is_file(html)
 
 
 if __name__ == '__main__':
-    gethtml = regularizeHTML(url)
-    isFile(gethtml)
-    traversal_subdir(dirPath)
-    for item in range(0, len(fileName)):
-        downloadFile(fileName, downloadPath)
+    a_html = regularize_html(URL)
+    is_file(a_html)
+    traversal_subdir(DIRPATH)
+#    for item in range(0, len(FILENAME)):
+#        download_file(FILENAME, DOWNLOADPATH)
