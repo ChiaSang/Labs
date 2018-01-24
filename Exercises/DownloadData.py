@@ -11,10 +11,10 @@ downloadPath = []
 dirPath = []
 fileName = []
 dirName = []
-subhtml = []
 url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/'
 # url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/data/'
 # url = 'http://data.caida.org/datasets/2013-asrank-data-supplement/extra/'
+#url = 'http://data.caida.org/datasets/topology/ark/'
 
 
 def regularizeHTML(url):
@@ -42,7 +42,7 @@ def downloadFile(fileName, downloadPath):
     '''download the files'''
     for (i, j) in zip(fileName, downloadPath):
         req = requests.get(j, stream=True)
-        with(open(i, 'wb')) as f:
+        with(open(i, 'ab')) as f:
             for chunk in req.iter_content(chunk_size=1024):
                 if chunk:
                     f.write(chunk)
@@ -52,14 +52,12 @@ def downloadFile(fileName, downloadPath):
 def traversal_subdir(dirpath):
     for address in dirpath:
         html = regularizeHTML(address)
-    return html
+        isFile(html)
+
 
 if __name__ == '__main__':
     gethtml = regularizeHTML(url)
     isFile(gethtml)
-   # downloadFile(fileName, downloadPath)
-    suba = traversal_subdir(dirPath)
-    subfname = suba.get('href')
-    for a_href in subfname:
-        isFile(a_href)
+    traversal_subdir(dirPath)
+    for item in range(0, len(fileName)):
         downloadFile(fileName, downloadPath)
