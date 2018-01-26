@@ -38,25 +38,15 @@ def is_file(src_a):
             DIRNAME.append(item.get('href'))
 
 
-#def download_file(filename, downloadpath):
-#    '''download the files'''
-#    for (i, j) in zip(filename, downloadpath):
-#        req = requests.get(j, stream=True)
-#        with(open(i, 'ab')) as f:
-#            for chunk in req.iter_content(chunk_size=1024):
-#                if chunk:
-#                    f.write(chunk)
-#                    f.flush()
-
-
 def download_file(filename, downloadpath):
     '''download the files'''
     for (i, j) in zip(filename, downloadpath):
         req = requests.get(j, stream=True)
-        for chunk in req.iter_content(10000):
-            dataFile = open(i, 'wb')
-            dataFile.write(chunk)
-        dataFile.close()
+        with(open(i, 'ab')) as f:
+            for chunk in req.iter_content(chunk_size=1024):
+                if chunk:
+                    f.write(chunk)
+                    f.flush()
 
 
 def traversal_subdir(dirpath):
