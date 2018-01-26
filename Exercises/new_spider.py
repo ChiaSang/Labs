@@ -45,15 +45,18 @@ for item in data_list:
     DATA.append(temp)
 
 # 保存一下cookie
-cookie_ =r.cookies
+cookie_ = r.cookies
 
 # 首页面12条异步加载的数据
-ksts = str(int(time.time()*1000))
-url2 = "https://s.taobao.com/api?_ksTS={}_219&callback=jsonp220&ajax=true&m=customized&stats_click=search_radio_all:1&q=java&s=36&imgfile=&bcoffset=0&js=1&ie=utf8&rn={}".format(ksts, md5(ksts.encode()).hexdigest())
+ksts = str(int(time.time() * 1000))
+url2 = "https://s.taobao.com/api?_ksTS={}_219&callback=jsonp220&ajax=true&m=customized&stats_click=search_radio_all:1&q=java&s=36&imgfile=&bcoffset=0&js=1&ie=utf8&rn={}".format(
+    ksts,
+    md5(ksts.encode()).hexdigest())
 
 r2 = requests.get(url2, params=find_arg, cookies=cookie_)
 html = r2.text
-data_list = json.loads(re.findall(r'{.*}', html)[0])['API.CustomizedApi']['itemlist']['auctions']
+data_list = json.loads(re.findall(
+    r'{.*}', html)[0])['API.CustomizedApi']['itemlist']['auctions']
 
 # 提取数据
 for item in data_list:
@@ -83,7 +86,8 @@ for i in range(1, 10):
         find_arg['s'] = 44 * (i - 1)
     r3 = requests.get(url, params=find_arg, cookies=cookie_)
     html = r3.text
-    data_list = json.loads(re.findall(r'{.*}', html)[0])['mods']['itemlist']['data']['auctions']
+    data_list = json.loads(re.findall(
+        r'{.*}', html)[0])['mods']['itemlist']['data']['auctions']
     # 提取数据
     for item in data_list:
         temp = {
@@ -114,14 +118,13 @@ sheet01.write(0, 6, '店名')
 sheet01.write(0, 7, 'url')
 # 写内容
 for i in range(len(DATA)):
-    sheet01.write(i+1, 0, DATA[i]['title'])
-    sheet01.write(i+1, 1, DATA[i]['view_price'])
-    sheet01.write(i+1, 2, DATA[i]['view_sales'])
-    sheet01.write(i+1, 3, DATA[i]['view_fee'])
-    sheet01.write(i+1, 4, DATA[i]['isTmall'])
-    sheet01.write(i+1, 5, DATA[i]['area'])
-    sheet01.write(i+1, 6, DATA[i]['name'])
-    sheet01.write(i+1, 7, DATA[i]['detail_url'])
+    sheet01.write(i + 1, 0, DATA[i]['title'])
+    sheet01.write(i + 1, 1, DATA[i]['view_price'])
+    sheet01.write(i + 1, 2, DATA[i]['view_sales'])
+    sheet01.write(i + 1, 3, DATA[i]['view_fee'])
+    sheet01.write(i + 1, 4, DATA[i]['isTmall'])
+    sheet01.write(i + 1, 5, DATA[i]['area'])
+    sheet01.write(i + 1, 6, DATA[i]['name'])
+    sheet01.write(i + 1, 7, DATA[i]['detail_url'])
 
 f.save(u'搜索%s的结果.xls' % find_word)
-

@@ -20,5 +20,3 @@ for i in range(len(sel_mark)):
     print('文本:', sel_mark[i].getText())
     print('链接:', sel_mark[i].get('href'))
     print('===============分割==============')
-
-
