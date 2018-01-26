@@ -38,18 +38,29 @@ def is_file(src_a):
             DIRNAME.append(item.get('href'))
 
 
-def download_file(FILENAME, DOWNLOADPATH):
+#def download_file(filename, downloadpath):
+#    '''download the files'''
+#    for (i, j) in zip(filename, downloadpath):
+#        req = requests.get(j, stream=True)
+#        with(open(i, 'ab')) as f:
+#            for chunk in req.iter_content(chunk_size=1024):
+#                if chunk:
+#                    f.write(chunk)
+#                    f.flush()
+
+
+def download_file(filename, downloadpath):
     '''download the files'''
-    for (i, j) in zip(FILENAME, DOWNLOADPATH):
+    for (i, j) in zip(filename, downloadpath):
         req = requests.get(j, stream=True)
-        with(open(i, 'ab')) as f:
-            for chunk in req.iter_content(chunk_size=1024):
-                if chunk:
-                    f.write(chunk)
-                    f.flush()
+        for chunk in req.iter_content(10000):
+            dataFile = open(i, 'wb')
+            dataFile.write(chunk)
+        dataFile.close()
 
 
 def traversal_subdir(dirpath):
+    '''sub_dir'''
     for address in dirpath:
         html = regularize_html(address)
         is_file(html)
@@ -59,5 +70,5 @@ if __name__ == '__main__':
     a_html = regularize_html(URL)
     is_file(a_html)
     traversal_subdir(DIRPATH)
-#    for item in range(0, len(FILENAME)):
-#        download_file(FILENAME, DOWNLOADPATH)
+    while DOWNLOADPATH:
+        download_file(FILENAME, DOWNLOADPATH)
