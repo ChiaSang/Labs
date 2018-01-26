@@ -12,6 +12,7 @@ DIRPATH = []
 FILENAME = []
 DIRNAME = []
 URL = 'http://data.caida.org/datasets/2013-asrank-data-supplement/'
+
 # URL = 'http://data.caida.org/datasets/2013-asrank-data-supplement/data/'
 # URL = 'http://data.caida.org/datasets/2013-asrank-data-supplement/extra/'
 #URL = 'http://data.caida.org/datasets/topology/ark/'
@@ -24,7 +25,7 @@ def regularize_html(url):
     soup = bs4.BeautifulSoup(html.text, 'lxml')
     print(soup.pre.text.encode('utf-8', 'ignore').decode('utf-8'))
     src_a = soup.find_all(name='a')
-    return(src_a)
+    return (src_a)
 
 
 def is_file(src_a):
@@ -42,7 +43,7 @@ def download_file(filename, downloadpath):
     '''download the files'''
     for (i, j) in zip(filename, downloadpath):
         req = requests.get(j, stream=True)
-        with(open(i, 'ab')) as f:
+        with (open(i, 'ab')) as f:
             for chunk in req.iter_content(chunk_size=1024):
                 if chunk:
                     f.write(chunk)
