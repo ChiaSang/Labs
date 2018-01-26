@@ -9,3 +9,4 @@ elif grade > 0 and grade < 59:
     print("你的成绩为D")
 else:
     print("Invalid score!\n")
+# 打印成绩
