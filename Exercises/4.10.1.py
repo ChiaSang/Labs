@@ -6,7 +6,6 @@ def addand(spam):
     print("结果为")
     print(','.join(spam))
 
-
 spam = []
 length = int(input("请输入列表的长度\n"))
 for i in range(length):
