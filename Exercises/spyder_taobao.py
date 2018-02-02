@@ -55,7 +55,6 @@ def get_more_productioninfo(pages, web_cookie):
         FIND_ARGS['data-value'] = 44 * i
         url = "https://s.taobao.com/search?data-key=s&data-value=44&ajax=true&imgfile=&js=1&stats_click=search_radio_all%3A1&ie=utf8&bcoffset=4&ntoffset=4&p4ppushleft=1%2C48".format(
             time.time())
-        print(url)
         if i > 1:
             FIND_ARGS['s'] = 44 * (i - 1)
         r3 = requests.get(url, params=FIND_ARGS, cookies=web_cookie)
