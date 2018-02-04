@@ -1,7 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # 2018-02-04 13:08
-'''
+"""
+Created on Sun Feb  4 22:25:10 2018
+@author: ChiaS
 爬取3333show漫画网的某个漫画的某一章
-'''
+"""
+
 import requests
 import os
 import bs4
