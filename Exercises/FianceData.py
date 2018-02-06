@@ -11,6 +11,7 @@ import json
 import pandas as pd
 from datetime import date
 import time
+
 #from pylab import *
 #from scipy.cluster.vq import *
 
@@ -25,7 +26,7 @@ def retrieve_quotes_historical(stock_code):
     if m:
         quotes = json.loads(m[0])
         quotes = quotes[::-1]
-    return [item for item in quotes if not 'type' in item]
+    return [item for item in quotes if 'type' not in item]
 
 
 def create_df(stock_code):
