@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 # Created by ChiaSang on 2018/2/5
 
-
-import requests
 import re
+import requests
 from bs4 import BeautifulSoup
+
 pages = 109
 se_num = re.compile(r'\d+')
 for page in range(1, pages):
