@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 
 pages = 109
 se_num = re.compile(r'\d+')
-for page in range(1, pages):
+for page in range(1, pages+1):
     url = 'https://www.sto.cc/book-112356-{0}.html'.format(str(page))
     html = requests.get(url)
     soup = BeautifulSoup(html.text, 'lxml')
