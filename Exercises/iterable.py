@@ -12,3 +12,4 @@ def char2num(s):
 
 reduce(fn, map(char2num, '13579'))
 s = input()
+# 输入的字符转为数字
