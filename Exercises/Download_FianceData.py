@@ -12,8 +12,8 @@ import pandas as pd
 from datetime import date
 import time
 
-#from pylab import *
-#from scipy.cluster.vq import *
+# from pylab import *
+# from scipy.cluster.vq import *
 
 
 def retrieve_quotes_historical(stock_code):

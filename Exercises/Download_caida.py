@@ -15,7 +15,7 @@ URL = 'http://data.caida.org/datasets/2013-asrank-data-supplement/'
 
 # URL = 'http://data.caida.org/datasets/2013-asrank-data-supplement/data/'
 # URL = 'http://data.caida.org/datasets/2013-asrank-data-supplement/extra/'
-#URL = 'http://data.caida.org/datasets/topology/ark/'
+# URL = 'http://data.caida.org/datasets/topology/ark/'
 
 
 def regularize_html(url):

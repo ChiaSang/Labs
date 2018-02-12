@@ -19,7 +19,9 @@ find_arg = {
     'initiative_id': 'staobaoz_%s%02d%02d' % (t[0], t[1], t[2])
 }
 # 搜索页面url
-first_url = "https://s.taobao.com/search?imgfile=&js=1&stats_click=search_radio_all%3A1&ie=utf8"
+first_url = '''
+https://s.taobao.com/search?imgfile=&js=1&stats_click=search_radio_all%3A1&ie=utf8
+'''
 
 # 发送请求
 r = requests.get(first_url, params=find_arg)
@@ -49,7 +51,9 @@ cookie_ = r.cookies
 
 # 首页面12条异步加载的数据
 ksts = str(int(time.time() * 1000))
-url2 = "https://s.taobao.com/api?_ksTS={}_219&callback=jsonp220&ajax=true&m=customized&stats_click=search_radio_all:1&q=java&s=36&imgfile=&bcoffset=0&js=1&ie=utf8&rn={}".format(
+url2 = '''
+https://s.taobao.com/api?_ksTS={}_219&callback=jsonp220&ajax=true&m=customized&stats_click=search_radio_all:1&q=java&s=36&imgfile=&bcoffset=0&js=1&ie=utf8&rn={}
+'''.format(
     ksts,
     md5(ksts.encode()).hexdigest())
 
@@ -80,7 +84,9 @@ for i in range(1, 10):
     find_arg['_ksTS'] = "%s_%s" % (int(ktsts * 1000), str(ktsts)[-3:])
     find_arg['callback'] = "jsonp%d" % (float(str(ktsts)[-3:]) + 1)
     find_arg['data-value'] = 44 * i
-    url = "https://s.taobao.com/search?data-key=s&data-value=44&ajax=true&imgfile=&js=1&stats_click=search_radio_all%3A1&ie=utf8&bcoffset=4&ntoffset=0&p4ppushleft=1%2C48".format(
+    url = '''
+    https://s.taobao.com/search?data-key=s&data-value=44&ajax=true&imgfile=&js=1&stats_click=search_radio_all%3A1&ie=utf8&bcoffset=4&ntoffset=0&p4ppushleft=1%2C48
+    '''.format(
         time.time())
     if i > 1:
         find_arg['s'] = 44 * (i - 1)
