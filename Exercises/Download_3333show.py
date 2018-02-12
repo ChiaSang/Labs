@@ -30,13 +30,13 @@ def get_html(url):
 def parse(html):
     global img_len
     soup = bs4.BeautifulSoup(html, 'lxml')
-    img_src = soup.find_all('table', id='qTcms_Pic_middle')[0].find_all('img')
+    # img_src = soup.find_all('table', id='qTcms_Pic_middle')[0].find_all('img')
     img_len = soup.find_all('select', id='k_pageSelect')[0].find_all('option')
     return img_len
 
 
-def get_img_req(imgurl):
-    html = requests.get(imgurl).text
+# def get_img_req(imgurl):
+#     html = requests.get(imgurl).text
 
 
 if __name__ == '__main__':
@@ -45,13 +45,14 @@ if __name__ == '__main__':
     get_html(url)
     parse(html)
     for item in img_len:
-        pages +=1
+        pages += 1
         img_url = url + pages_keys + str(pages)
         fname = str(pages) + '.jpg'
         print(img_url)
         get_html(img_url)
         soup_img = bs4.BeautifulSoup(html, 'lxml')
-        sub_img_src = soup_img.find_all('table', id='qTcms_Pic_middle')[0].find_all('img')
+        sub_img_src = soup_img.find_all('table', id='qTcms_Pic_middle')[
+            0].find_all('img')
         print(sub_img_src[0]['src'])
         req = requests.get(sub_img_src[0]['src'], stream=True)
         imageFile = open(
