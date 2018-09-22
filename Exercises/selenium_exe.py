@@ -6,7 +6,7 @@ Created on Fri Jan 26 14:07:59 2018
 """
 
 from selenium import webdriver
-BROWSER = webdriver.Chrome()
+BROWSER = webdriver.Firefox()
 BROWSER.get("http://www.g.cn")
 OPEN_A = BROWSER.find_element_by_link_text('google.com.hk')
 DRIVER = OPEN_A.click()

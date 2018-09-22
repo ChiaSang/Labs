@@ -7,7 +7,5 @@ def collatz(number):
         print("这是奇数")
         print(number)
         return((3 * number + 1))
-
-
 number = int(input("请输入一个数字\n"))
 collatz(number)
