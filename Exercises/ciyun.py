@@ -1,3 +1,5 @@
+
+# 生成苹果日报词云
 import sqlite3
 from os import path
 
