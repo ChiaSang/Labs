@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 # -*- coding: utf-8 -*-
 # Created by ChiaSang on 2017-12-08 19:31
 # 鸡兔同笼问题
