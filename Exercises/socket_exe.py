@@ -3,7 +3,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 print(s)
 
-server = '192.168.6.10'
+server = '192.168.6.1'
 port = 80
 
 server_ip = socket.gethostbyname(server)
