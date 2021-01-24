@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% block css %}
+<style>
+    .row-centered {
+        text-align: center;
+    }
+
+    .col-centered {
+        display: inline-block;
+        float: none;
+        text-align: left;
+    }
+</style>
+{% endblock %}
+{% block title %}资产详细信息 - 资产管理{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="page-header">
+            <h1>
+                资产信息修改
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container  center">
+    <!-- <div class="space-20"></div> -->
+    <div class="row row-centered">
+        <div class="col-sm-6 card jumbotron col-centered">
+            <!-- <div class="space-10"></div> -->
+            <form action="{% url 'asset:asset_modify' %}" method="post">
+                <div class="input-group">
+                    <input type="hidden" name="asset_holder" class="col-xs-10 col-sm-5"
+                        value="{{ asset.asset_holder_id }}">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">资产所属人</span>
+                    <select name="asset_holder" aria-controls="dynamic-table" class="form-control col-xs-10 col-sm-5">
+                        {% for holder in holders %}
+                        <option value="{{ holder.id }}" {% ifequal holder.id asset.asset_holder_id %}selected{% endifequal %}>
+                            {{ holder.username }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">资产类别</span>
+                    <select name="asset_type" aria-controls="dynamic-table" class="form-control col-xs-10 col-sm-5">
+                        {% for type in types %}
+                        <option value="{{ type.id }}" {% ifequal type.id asset.asset_type_id %}selected{% endifequal %}>
+                            {% if type.parent_category %}
+                            {{ type.parent_category }} -
+                            {{ type.asset_type }}
+                            {% else %}
+                            {{ type.asset_type }}
+                            {% endif %}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        资产状态</span>
+                    <select name="asset_status" aria-controls="dynamic-table" class="form-control col-xs-10 col-sm-5">
+                        {% for state in status %}
+                        <option name="asset_status" value="{{ state.id }}" {% ifequal state.id asset.asset_status_id%}selected{% endifequal %}>{{ state.get_asset_status_display }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        所属部门</span>
+                    <select name="asset_dep" aria-controls="dynamic-table" class="form-control col-xs-10 col-sm-5">
+                        {% for dep in departs %}
+                        <option value="{{ dep.id }}" {% ifequal dep.id asset.asset_dep_id %}selected{% endifequal %}>
+                            {{dep.dp_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br>
+
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        资产名称</span>
+                    <input type="hidden" name="asset_id" value="{{ asset.asset_id }}">
+                    <input type="text" id="form-field-1" name="asset_name" value="{{ asset.asset_name }}"
+                        class="form-control col-xs-10 col-sm-5">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        资产型号</span>
+                    <input type="text" id="form-field-1" name="asset_model" value="{{ asset.asset_model }}"
+                        class="form-control col-xs-10 col-sm-5">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        规格</span>
+                    <input type="text" id="form-field-1" name="specification" value="{{ asset.specification }}" class="form-control col-xs-10 col-sm-5">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        数量</span>
+                    <input type="text" id="form-field-1" name="quantity" value="{{ asset.quantity }}" class="form-control col-xs-10 col-sm-5">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        制造商</span>
+                    <input type="text" id="form-field-1" name="manufacture" value="{{ asset.manufacture }}" class="form-control col-xs-10 col-sm-5">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        计算机/服务器机箱类型</span>
+                    <input type="text" id="form-field-1" name="server_type" value="{{ asset.server_type }}" class="form-control col-xs-10 col-sm-5">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        功率</span>
+                    <input type="text" id="form-field-1" name="power" value="{{ asset.power }}" class="form-control col-xs-10 col-sm-5">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        采购时间</span>
+                    <input type="date" id="form-field-1" name="purchase_time"
+                        value="{{ asset.purchase_time | date:'Y-m-d' }}" class="form-control col-xs-10 col-sm-5">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        备注</span>
+                    <input type="text" id="form-field-1" name="comment" value="{{ asset.comment }}"
+                        class="form-control col-xs-10 col-sm-5">
+                </div>
+                <br>
+                <div class="input-group" style="margin-left: auto;margin-right: auto">
+                    <!--startprint-->
+                    <img src="data:image/png;base64,{{ as_qrcode|safe }}" id="qrcode">
+                    <!--endprint-->
+                </div>
+                <div class="form-actions center">
+                    <button type="button" class="btn btn-sm btn-info" onClick="download();">
+                        打印二维码
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-success">
+                        提交
+                    </button>
+                    <button type="button" class="btn btn-sm btn-failed" onclick="btn_cancel()">
+                        取消
+                    </button>
+                </div>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    function btn_cancel() {
+        location.href = "{% url 'asset:asset_list' %}";
+    }
+    function download() {
+        location.href = "{% url 'asset:asset_qrcode' asset.asset_id %}";
+    }
+
+    function print() {
+        bdhtml = window.document.body.innerHTML;
+        sprnstr = "<!--startprint-->";
+        eprnstr = "<!--endprint-->";
+        prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 17);
+        prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));
+        window.document.body.innerHTML = prnhtml;
+        if (getExplorer() == "IE") {
+            pagesetup_null();
+        }
+        window.print();
+    }
+</script>
+{% endblock %}

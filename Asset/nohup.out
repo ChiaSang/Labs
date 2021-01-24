@@ -1,0 +1,8 @@
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 09, 2021 - 10:41:01
+Django version 2.2.3, using settings 'assetadmin.settings'
+Starting development server at http://0.0.0.0:50000/
+Quit the server with CONTROL-C.

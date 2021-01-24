@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}资产管理 - 部门新增{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h1>
+                    部门新增
+                </h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container  center">
+        <div class="space-30"></div>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-5">
+                <div class="widget-box">
+                    <div class="widget-body">
+                        <div class="widget-main no-padding">
+                            <form action="{% url 'users:dp_add' %}" method="post">
+                                <fieldset>
+                                    <label>部门新增</label>
+                                    <input type="text" name="dp_name" placeholder="请输入...">
+                                </fieldset>
+                                {% if error_msg %}
+                                    <label class="block clearfix">
+                                        <span class="block input-icon input-icon-right">{{ error_msg }}</span>
+                                    </label>
+                                {% endif %}
+                                {% for field in form %}
+                                    {{ field.errors }}
+                                    {{ field.label_tag }}: {{ field }}
+                                {% endfor %}
+                                <div class="form-actions center">
+                                    <button type="submit" class="btn btn-sm btn-success">
+                                        提交
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-failed" onclick="btn_cancel()">
+                                        取消
+                                    </button>
+                                </div>
+                                {% csrf_token %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block script %}
+    <script>
+        function btn_cancel() {
+            location.href = "{% url 'users:dp_list' %}";
+        }
+    </script>
+{% endblock %}

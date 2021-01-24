@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}部门管理 - 资产管理{% endblock %}
+{% block custome_css %}
+    <link rel="stylesheet" href="{% static 'asset/css/server-list.css' %}">
+{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h1>
+                    部门管理
+                </h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="clearfix">
+
+        <div class="pull-right tableTools-container">
+            <button id="add-type" type="button" class="btn btn-info btn-sm">
+                <span class="ace-icon fa fa-pencil-square-o icon-on-right bigger-110"></span>
+                新增
+            </button>
+        </div>
+
+        <table id="simple-table" class="table  table-bordered table-hover">
+            <thead>
+            <tr>
+                <th class="center">序号</th>
+                <th class="center">部门名称</th>
+                <th class="center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for section in section_lists %}
+                <tr>
+                    <td class="center">{{ forloop.counter }}</td>
+                    <td class="center">
+                        {#                        <a href="{% url 'users:section_list' section.id %}">#}
+                        {{ section.dp_name }}
+                        {#                        </a>#}
+                    </td>
+                    <td class="center">
+                        <a href="{% url 'users:dp_detail' section.id %}">
+                            <button class="btn btn-minier btn-info">修改</button>
+                        </a>
+                        <a href="{% url 'users:dp_delete' section.id %}">
+                            <button class="btn btn-minier btn-danger" onclick="return isDel()">删除</button>
+                        </a>
+                    </td>
+                </tr>
+                <script>
+                    function del() {
+                        var msg = "您真的确定要删除吗？\n\n请确认！";
+                        if (confirm(msg) == true) {
+                            location.href = "{% url 'users:dp_delete' section.id %}";
+                        } else {
+                            {#history.go(-1);#}
+                        }
+                    }
+                </script>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+{% endblock %}
+{% block script %}
+    <script>
+        var btn_server_add = document.getElementById("add-type");
+        btn_server_add.onclick = function () {
+            location.href = "{% url 'users:dp_add' %}";
+        };
+
+        function isDel() {
+            var msg = "您真的确定要删除吗？\n\n请确认！";
+            if (confirm(msg) == true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+{% endblock %}

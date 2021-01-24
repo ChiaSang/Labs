@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block css %}
+<style>
+    .row-centered {
+        text-align: center;
+    }
+
+    .col-centered {
+        display: inline-block;
+        float: none;
+        text-align: left;
+    }
+</style>
+<link rel="stylesheet" href="{% static 'asset/css/bootstrap-datepicker.css' %}">
+{% endblock %}
+{% block title %}维修信息管理 - 资产管理{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="page-header">
+            <h1>
+                维修信息管理
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container  center">
+    <!-- <div class="space-20"></div> -->
+    <div class="row row-centered">
+        <div class="col-sm-6 card jumbotron col-centered">
+            <!-- <div class="space-10"></div> -->
+            <form action="{% url 'asset:asset_maintenance_detail' fAsset.asset_id %}" method="post">
+                <div class="input-group">
+                    <input type="hidden" name="asset_id" class="col-xs-10 col-sm-5" value="{{ fAsset.asset_id }}">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        维修时间</span>
+                    <input type="date" id="date" name="maintenance_time" class="form-control col-xs-10 col-sm-5">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        维修记录</span>
+                    <textarea type="text" id="form-field-1" name="maintenance" class="form-control col-xs-10 col-sm-5"></textarea>
+                </div>
+                <div class="form-actions center">
+                    <button type="submit" class="btn btn-sm btn-success">
+                        提交
+                    </button>
+                </div>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
