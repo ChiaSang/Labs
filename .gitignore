@@ -1,3 +1,4 @@
 .DS_Store
 *.log
+.vscode
 /Web/Learning-H5/Highcharts-8.2.0/*
