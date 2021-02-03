@@ -17,11 +17,11 @@
           <v-list-item-icon>
             <v-icon>{{ link.icon }}</v-icon>
           </v-list-item-icon>
-          <v-list-tile-content>
-            <v-list-tile-title>
+          <v-list-item-content>
+            <v-list-item-title>
               {{ link.text }}
-            </v-list-tile-title>
-          </v-list-tile-content>
+            </v-list-item-title>
+          </v-list-item-content>
         </v-list-item>
       </v-list>
 
@@ -36,7 +36,7 @@
       <v-btn icon>
         <v-icon>mdi-invert-colors</v-icon>
       </v-btn>
-      <v-btn depressed flat color="white">
+      <v-btn depressed text color="white">
         <span class="font-weight-light">Sign Out</span>
         <v-icon right>mdi-exit-to-app</v-icon>
       </v-btn>
