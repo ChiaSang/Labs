@@ -58,3 +58,40 @@ export default {
   }),
 };
 </script>
+
+
+
+
+
+<template>
+  <nav>
+    <v-toolbar dense flat app>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>
+        <span color="`blue-grey darken-2`--text">在线系统</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn depressed flat color="white">
+        <span class="font-weight-light">Sign Out</span>
+        <v-icon right>mdi-exit_to_app</v-icon>
+      </v-btn>
+    </v-toolbar>
+
+    <v-navigation-drawer app v-model="drawer">
+      <p><router-link to="/">Main</router-link> </p>
+      <p><router-link to="/home">Home</router-link> </p>
+      <p><router-link to="/about">About</router-link> </p>
+    </v-navigation-drawer>
+  </nav>
+</template>
+
+<script>
+export default {
+  data() {
+    return { drawer: false };
+  },
+};
+</script>
+
+<style>
+</style>
