@@ -1,50 +1,34 @@
 <template>
   <div class="about">
-    <v-container class="my-5">
+    <v-container fluid class="my-5">
       <v-row>
-        <v-col cols="12">
-          <v-expansion-panels>
-            <v-expansion-panel v-for="project in projects" :key="project.title">
-              <v-expansion-panel-header>{{
-                project.title
-              }}</v-expansion-panel-header>
-              <v-expansion-panel-content>
-                <v-card flat>
-                  <v-card-text class="px-4 py-0 grey--text">
-                    <div class="font-weight-bold">due by {{ project.due }}</div>
-                    <div>{{ project.content }}</div>
-                  </v-card-text>
-                </v-card>
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col
-          cols="12"
-          sm="6"
-          md="4"
-          lg="3"
-          v-for="person in team"
-          :key="person.name"
-        >
-          <v-card class="text-center ma-3">
-            <v-responsive class="pt-4">
-              <v-avatar class="mb-4" color="grey darken-1" size="64"></v-avatar>
-            </v-responsive>
-            <v-card-text>
-              <div class="text-subtitle-1">{{ person.name }}</div>
-              <div class="grey--text">{{ person.role }}</div>
-            </v-card-text>
-            <v-card-actions>
-              <v-btn depressed class="grey--text">
-                <v-icon small left> mdi-message </v-icon>
-                <span>Message</span>
-              </v-btn>
-            </v-card-actions>
-          </v-card>
+        <v-col cols="4" class="text-center">
+          <form>
+            <v-text-field
+              v-model="name"
+              :counter="10"
+              label="Name"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-model="phone"
+              label="E-mail"
+              required
+            ></v-text-field>
+            <v-select
+              v-model="select"
+              :items="gender"
+              label="Item"
+              required
+            ></v-select>
+            <v-checkbox
+              v-model="checkbox"
+              label="Do you agree?"
+              required
+            ></v-checkbox>
+            <v-btn class="mr-4" @click="submit"> submit </v-btn>
+            <v-btn @click="clear"> clear </v-btn>
+          </form>
         </v-col>
       </v-row>
     </v-container>
@@ -52,51 +36,57 @@
 </template>
 
 <script>
+
 export default {
-  data() {
-    return {
-      team: [
-        { name: "The Net Ninja", role: "Web developer" },
-        { name: "Ryu", role: "Graphic designer" },
-        { name: "Chun Li", role: "Web developer" },
-        { name: "Gouken", role: "Social media maverick" },
-        { name: "Yoshi", role: "Sales guru" },
-      ],
-      projects: [
-        {
-          title: "Design a new website",
-          person: "The Net Ninja",
-          due: "1st Jan 2019",
-          status: "ongoing",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!",
-        },
-        {
-          title: "Code up the homepage",
-          person: "Chun Li",
-          due: "10th Jan 2019",
-          status: "complete",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!",
-        },
-        {
-          title: "Design video thumbnails",
-          person: "Ryu",
-          due: "20th Dec 2018",
-          status: "complete",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!",
-        },
-        {
-          title: "Create a community forum",
-          person: "Gouken",
-          due: "20th Oct 2018",
-          status: "overdue",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!",
-        },
-      ],
-    };
+  data: () => ({
+    name: "",
+    phone: "",
+    select: null,
+    gender: ["男", "女"],
+    checkbox: false,
+  }),
+
+  computed: {
+    checkboxErrors() {
+      const errors = [];
+      if (!this.$v.checkbox.$dirty) return errors;
+      !this.$v.checkbox.checked && errors.push("You must agree to continue!");
+      return errors;
+    },
+    selectErrors() {
+      const errors = [];
+      if (!this.$v.select.$dirty) return errors;
+      !this.$v.select.required && errors.push("Item is required");
+      return errors;
+    },
+    nameErrors() {
+      const errors = [];
+      if (!this.$v.name.$dirty) return errors;
+      !this.$v.name.maxLength &&
+        errors.push("Name must be at most 10 characters long");
+      !this.$v.name.required && errors.push("Name is required.");
+      return errors;
+    },
+    emailErrors() {
+      const errors = [];
+      if (!this.$v.email.$dirty) return errors;
+      !this.$v.email.email && errors.push("Must be valid e-mail");
+      !this.$v.email.required && errors.push("E-mail is required");
+      return errors;
+    },
+  },
+
+  methods: {
+    submit() {
+      this.$v.$touch();
+    },
+    clear() {
+      this.$v.$reset();
+      this.name = "";
+      this.email = "";
+      this.select = null;
+      this.checkbox = false;
+    },
   },
 };
 </script>

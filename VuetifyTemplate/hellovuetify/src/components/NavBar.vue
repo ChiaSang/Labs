@@ -11,7 +11,7 @@
 
     <v-navigation-drawer app v-model="drawer">
       <v-sheet color="grey lighten-4" class="pa-4">
-        <v-avatar class="mb-4" color="grey darken-1" size="64"></v-avatar>
+        <v-avatar class="mx-2" color="grey darken-1" size="64"></v-avatar>
         <Popup />
         <div>chiachia@example.com</div>
       </v-sheet>
@@ -36,10 +36,10 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar color="#42b983" dense app>
+    <v-app-bar color="success" app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>
-        <span color="#2c3e50">在线综合管理系统</span>
+        <span class="white--text">在线综合管理系统</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon color="white">
@@ -83,9 +83,10 @@ export default {
       drawer: false,
       snackbar: false,
       links: [
-        { icon: "mdi-view-dashboard", text: "Dashboard", route: "/" },
+        { icon: "mdi-view-dashboard", text: "Dashboard", route: "/home" },
         { icon: "mdi-account", text: "About", route: "/about" },
         { icon: "mdi-folder", text: "HelloWorld", route: "/hello" },
+        { icon: "mdi-chart-bar", text: "Charts", route: "/charts" },
       ],
     };
   },

@@ -5,8 +5,14 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [{
-    path: '/',
+const routes = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../Login')
+},
+{
+    path: '/home',
     name: 'Home',
     component: Home
   },
@@ -22,6 +28,11 @@ const routes = [{
     path: '/hello',
     name: 'HelloWorld',
     component: () => import('../views/HelloWorld.vue')
+  },
+  {
+    path: '/charts',
+    name: 'Charts',
+    component: () => import('../views/Charts.vue')
   }
 ]
 
